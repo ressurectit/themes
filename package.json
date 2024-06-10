@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "build": "ng build",
-        "build:min": "ng build -c production",
+        "build:min": "ng build -c production && rimraf docs && copyfiles -u 2 wwwroot/browser/**/*.* docs && replace-in-file /base\\shref=\\\".*?\\\"/g \"base href=\\\"/themes/\\\"\" docs/index.html --isRegex",
         "prebuild": "npm run version:build && npm run config:build",
         "prebuild:min": "npm run clean && npm run prebuild",
         "clean": "rimraf wwwroot config/configOverride.js config/configServerOverride.js config/configBrowserOverride.js version.json",
@@ -92,6 +92,7 @@
         "chalk": "4.1.2",
         "compression": "1.7.4",
         "concurrently": "8.2.2",
+        "copyfiles": "2.4.1",
         "dotenv": "10.0.0",
         "envsub": "4.1.0",
         "eslint": "7.32.0",
@@ -100,6 +101,7 @@
         "http-proxy-middleware": "2.0.6",
         "nodejs-connect-extensions": "2.0.5",
         "npm-git-version": "2.0.0",
+        "replace-in-file": "7.2.0",
         "rimraf": "5.0.7",
         "typescript": "5.4.5",
         "yargs": "17.7.2"
