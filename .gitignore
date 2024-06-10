@@ -1,5 +1,6 @@
 .angular/
 node_modules/
+wwwroot/
 packages/
 **/mockLogger/mocks/
 **/config/version.json
