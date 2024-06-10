@@ -1,7 +1,5 @@
 .angular/
 node_modules/
-wwwroot/
-!wwwroot/browser
 packages/
 **/mockLogger/mocks/
 **/config/version.json
