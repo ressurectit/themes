@@ -1,0 +1,48 @@
+{
+    "configuration":
+    {
+        "debug": true,
+        "debugTranslations": false,
+        "apiBaseUrl": "api/",
+        "defaultApiHeaders": 
+        {
+            "Accept": "application/json"
+        },
+        "themes":
+        [
+            "light"
+        ],
+        "languages":
+        [
+            {
+                "lang": "en",
+                "name": "English"
+            },
+            {
+                "lang": "sk",
+                "name": "Slovenčina"
+            }
+        ],
+        "disableMockLogger": false,
+        "demoThemes":
+        {
+            "chiroptera": "chiroptera",
+            "vszp": "vszp",
+            "vszpCompact": "vszp-compact"
+        }
+    },
+    "general":
+    {
+        "theme": "light",
+        "language": "en"
+    },
+    "debug":
+    {
+        "consoleEnabled": true,
+        "debugData": false
+    },
+    "logging":
+    {
+        "consoleLogLevel": "verbose"
+    }
+}

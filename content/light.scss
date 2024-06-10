@@ -1,0 +1,9 @@
+@use '@css-styles/themes' as themes;
+
+@use './scss/theme/defaultTheme' as defaultTheme;
+@use './scss/theme/light' as appTheme;
+
+@use 'scss/theme/theme' with ($fontSize: appTheme.$fontSize,
+                              $theme: themes.defineTheme(),
+                              $appTheme: defaultTheme.defineTheme(appTheme.$appTheme),
+                              $themeName: 'light');
