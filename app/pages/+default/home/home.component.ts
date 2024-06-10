@@ -1,6 +1,8 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ComponentRedirectRoute, ComponentRoute} from '@anglr/common/router';
-import {DebugDataCopyClickModule} from '@anglr/common/material';
+
+import {RenderMarkdownDirective, WithThemeDirective} from '../../../directives';
+import {ThemeSelectorComponent} from '../../../components';
 
 /**
  * Home component
@@ -12,9 +14,12 @@ import {DebugDataCopyClickModule} from '@anglr/common/material';
     standalone: true,
     imports:
     [
-        DebugDataCopyClickModule,
+        RenderMarkdownDirective,
+        ThemeSelectorComponent,
+        WithThemeDirective,
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    preserveWhitespaces: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @ComponentRedirectRoute('', 'home')
 @ComponentRoute({path: 'home'})
