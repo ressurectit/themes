@@ -1,0 +1,4 @@
+@for(theme of themes(); track theme)
+{
+    <button class="flex-1" (click)="selected.setTheme(theme.value)">{{theme.name}}</button>
+}
