@@ -1,6 +1,7 @@
 import {Component, ChangeDetectionStrategy, Inject, Signal, computed, ElementRef, inject} from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {DIALOG_DATA} from '@angular/cdk/dialog';
+import {CdkCopyToClipboard} from '@angular/cdk/clipboard';
 
 import {RenderMarkdownDirective} from '../../directives/renderMarkdown/renderMarkdown.directive';
 
@@ -17,6 +18,7 @@ import {RenderMarkdownDirective} from '../../directives/renderMarkdown/renderMar
     [
         RenderMarkdownDirective,
         MatDialogModule,
+        CdkCopyToClipboard,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })

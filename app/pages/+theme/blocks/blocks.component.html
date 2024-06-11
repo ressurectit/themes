@@ -1,0 +1,82 @@
+<div renderMarkdown>
+# Blocks
+
+Visual building blocks for creating content. 
+
+- `primary-block` primary block used for displaying main content
+- `secondary-block` secondary block used for displaying main content with in different look
+- `highlight-block` allows highlighting content inside of primary or secondary block
+
+## Primary block
+
+- **properties**
+    - *padding* top and bottom
+    - *background color*
+    - *font color* 
+    - *scrollbar color*
+- **customization**
+    - *background color* => `primary.background`
+    - *font color* => `primary.foreground`
+    - *scrollbar color* => `primary.scrollbar`
+        - **global**
+            - *padding* => `sizeXs`
+</div>
+
+<div withTheme showSource class="html-sample">
+    <div class="primary-block">
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut erat sed quam auctor pulvinar. Praesent ante nulla, molestie a lorem et, viverra rutrum turpis. Integer interdum in tellus id faucibus. Phasellus iaculis vestibulum nisi malesuada tincidunt. Nullam eget turpis ornare, sodales mauris id, pharetra tellus. In finibus lacinia tincidunt. Proin non lorem et nisl tempor tincidunt ac sit amet ipsum. </div>
+    </div>
+</div>
+
+<div renderMarkdown>
+## Secondary block
+
+- **properties**
+    - *padding* top and bottom
+    - *background color*
+    - *font color* 
+    - *scrollbar color*
+- **customization**
+    - *background color* => `secondary.background`
+    - *font color* => `secondary.foreground`
+    - *scrollbar color* => `secondary.scrollbar`
+        - **global**
+            - *padding* => `sizeXs`
+</div>
+
+<div withTheme showSource class="html-sample">
+    <div class="secondary-block">
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut erat sed quam auctor pulvinar. Praesent ante nulla, molestie a lorem et, viverra rutrum turpis. Integer interdum in tellus id faucibus. Phasellus iaculis vestibulum nisi malesuada tincidunt. Nullam eget turpis ornare, sodales mauris id, pharetra tellus. In finibus lacinia tincidunt. Proin non lorem et nisl tempor tincidunt ac sit amet ipsum. </div>
+    </div>
+</div>
+
+<div renderMarkdown>
+## Highlight block
+
+- **properties**
+    - *padding*
+    - *background color*
+    - *font color* 
+    - *scrollbar color*
+    - *border radius*
+- **customization**
+    - *background color* => `block.background`
+    - *font color* => `block.foreground`
+    - *scrollbar color* => `block.scrollbar`
+        - **global**
+            - *padding* => `sizeXs`
+            - *border radius* => `borderRadius`
+</div>
+
+<div withTheme showSource class="html-sample">
+    <div class="highlight-block">
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut erat sed quam auctor pulvinar. Praesent ante nulla, molestie a lorem et, viverra rutrum turpis. Integer interdum in tellus id faucibus. Phasellus iaculis vestibulum nisi malesuada tincidunt. Nullam eget turpis ornare, sodales mauris id, pharetra tellus. In finibus lacinia tincidunt. Proin non lorem et nisl tempor tincidunt ac sit amet ipsum. </div>
+    </div>
+</div>
+
+<div class="flex-row flex-end margin-top-medium">
+    <button type="button" class="btn-icon text-left margin-top-big" goBack [title]="'back' | firstUppercaseLocalize">
+        <span class="fas fa-arrow-left"></span>
+        <span>{{'back' | firstUppercaseLocalize}}</span>
+    </button>
+</div>

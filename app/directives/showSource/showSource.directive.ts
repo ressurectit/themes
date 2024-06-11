@@ -118,7 +118,7 @@ export class ShowSourceDirective implements OnDestroy
         this._dialogSvc.open<SourceViewerComponent, string>(SourceViewerComponent,
         {
             width: '75vw',
-            height: '75vh',
+            maxHeight: '75vh',
             data: this._sourceHtml,
         });
     }
