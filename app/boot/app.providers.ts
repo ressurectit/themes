@@ -309,7 +309,7 @@ export const appProviders: (Provider|EnvironmentProviders)[] =
         useValue: <RenderMarkdownConfig>
         {
             assetsPathPrefix: 'md',
-            baseUrl: '/pomoc'
+            baseUrl: ''
         }
     },
 

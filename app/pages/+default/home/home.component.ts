@@ -1,8 +1,7 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ComponentRedirectRoute, ComponentRoute} from '@anglr/common/router';
 
-import {RenderMarkdownDirective, WithThemeDirective} from '../../../directives';
-import {ThemeSelectorComponent} from '../../../components';
+import {RenderMarkdownDirective} from '../../../directives';
 
 /**
  * Home component
@@ -15,8 +14,6 @@ import {ThemeSelectorComponent} from '../../../components';
     imports:
     [
         RenderMarkdownDirective,
-        ThemeSelectorComponent,
-        WithThemeDirective,
     ],
     preserveWhitespaces: true,
     changeDetection: ChangeDetectionStrategy.OnPush,

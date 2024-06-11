@@ -1,4 +1,8 @@
 @for(theme of themes(); track theme)
 {
-    <button class="flex-1" (click)="selected.setTheme(theme.value)">{{theme.name}}</button>
+    <div class="flex-1 flex-row" [class.mat-elevation-z10]="theme.value != selected.theme()" [class.mat-elevation-z1]="theme.value == selected.theme()" [class.active]="theme.value == selected.theme()">
+        <button class="btn btn-primary flex-1" (click)="selected.setTheme(theme.value)">
+            <span>{{theme.name}}</span>
+        </button>
+    </div>
 }

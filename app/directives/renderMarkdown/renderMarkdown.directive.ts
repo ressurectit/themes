@@ -42,7 +42,7 @@ export class RenderMarkdownDirective
     /**
      * Base url for md
      */
-    public baseUrl: InputSignal<string|undefined|null> = input();
+    public baseUrl: InputSignal<string> = input('');
 
     /**
      * Path for static assets
