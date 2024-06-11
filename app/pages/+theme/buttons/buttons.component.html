@@ -1,101 +1,202 @@
+<div class="flex-row flex-end margin-top-medium">
+    <button type="button" class="btn-icon text-left margin-top-big" goBack [title]="'back' | firstUppercaseLocalize">
+        <span class="fas fa-arrow-left"></span>
+        <span>{{'back' | firstUppercaseLocalize}}</span>
+    </button>
+</div>
+
 <div renderMarkdown>
 # Buttons
 
+Styling of buttons and anchors.
+
+- `btn` styles layout, dimensions of button
+    - content of button must be placed inside `&lt;span&gt;`
+    - icon for button must be placed in `&lt;span&gt;` with either css classes  `fa`, `fas`, `fab`, `far`, `glyphicon`
+    - disabled button can be displayed using `disabled` css class or attribute (for anchor you can use only css class)
+- `btn-*` adds coloring to button, according meaning, must be used together with `btn` class
+    - `primary`
+    - `secondary`
+    - `info`
+    - `default`
+    - `success`
+    - `warning`
+    - `danger`
+    - `error`
+- `btn-icon`
+    - special class that can be used with or without `btn` class
+- `buttons-gap`
+    - gaps between buttons, requires *flexbox*
+
+## `btn` css class
+
+- **properties**
+    - *letter spacing*
+    - *background image* set to `none`
+    - *text shadow*
+    - *box shadow*
+    - *text transformation*
+    - *transition*
+    - *border*
+    - *border radius*
+    - *padding*
+    - *font-family*
+    - *cursor* set to `pointer`
+    - *white space* set to `nowrap`
+    - *font size*
+    - *font weight*
+    - *min width*
+    - *position* set to `relative`
+    - *display* set to `flex`
+    - *flex direction* set to `row`
+    - *gap*
+- **customization**
+    - *letter spacing* => `button.letterSpacing`
+    - *text shadow* => `button.textShadow`
+    - *box shadow* => `button.boxShadow`
+    - *text transformation* => `button.textTransformation`
+    - *transition* => `button.transition`
+    - *border* => `button.border`
+    - *border radius* => `button.borderRadius`
+    - *padding* => `button.padding`
+    - *font size* => `button.fontSize`
+    - *font-family* => `fontFamily`
+    - *font weight* => `button.fontWeight`
+    - *min width* => `button.minWidth`
+    - *gap* => `button.contentGap`
+    - *scrollbar color* => `primary.scrollbar`
+
+### **EXAMPLE `btn` only**
 </div>
 
-<div withTheme showSource>
-    <div class="margin-bottom-small flex-row buttons-gap">
-        <button class="btn btn-primary">
-            <span class="fas fa-times"></span>
+<div showSource class="html-sample">
+    <div class="html-sample-margin" withTheme showSourceContent>
+        <button type="button" class="btn">
+            <span class="fas fa-plane"></span>
             <span>text</span>
         </button>
+    </div>
+</div>
 
-        <button class="btn btn-secondary">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+<div renderMarkdown>
+## `btn-*` css class
 
-        <button class="btn btn-success">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+- **sub selectors**
+    - *::before* allows styling of background
+        - **properties**
+            - *content* set to `""`
+            - *position* set to `absolute`
+            - *transition*
 
-        <button class="btn btn-warning">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+### **EXAMPLE `btn-primary`**
+</div>
 
-        <button class="btn btn-info">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
-
-        <button class="btn btn-error">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
-
-        <button class="btn btn-default">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
-
-        <button class="btn btn-icon">
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
-
-        <button class="btn-icon">
+<div showSource class="html-sample">
+    <div class="html-sample-margin" withTheme showSourceContent>
+        <button type="button" class="btn btn-primary">
             <span class="fas fa-times"></span>
             <span>text</span>
         </button>
     </div>
+</div>
 
-    <div class="flex-row buttons-gap">
-        <button class="btn btn-primary" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+<div renderMarkdown>
+### __EXAMPLE all btn-*__ with `buttons-gap`
+</div>
 
-        <button class="btn btn-secondary" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+<div showSource class="html-sample">
+    <div class="html-sample-margin" withTheme showSourceContent>
+        <div class="flex-row buttons-gap">
+            <button type="button" class="btn btn-primary">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn btn-success" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-secondary">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn btn-warning" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-info">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn btn-info" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-default">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn btn-error" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-success">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn btn-default" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-warning">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn btn-icon" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-danger">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
 
-        <button class="btn-icon" disabled>
-            <span class="fas fa-times"></span>
-            <span>text</span>
-        </button>
+            <button type="button" class="btn btn-error">
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div renderMarkdown>
+### __EXAMPLE all btn-*__ `disabled` with `buttons-gap`
+</div>
+
+<div showSource class="html-sample">
+    <div class="html-sample-margin" withTheme showSourceContent>
+        <div class="flex-row buttons-gap">
+            <button type="button" class="btn btn-primary" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-secondary" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-info" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-default" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-success" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-warning" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-danger" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+
+            <button type="button" class="btn btn-error" disabled>
+                <span class="fas fa-file-archive"></span>
+                <span>text</span>
+            </button>
+        </div>
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-import {AfterViewInit, ComponentRef, Directive, ElementRef, HostListener, Inject, InputSignalWithTransform, OnDestroy, ViewContainerRef, booleanAttribute, input} from '@angular/core';
+import {AfterViewInit, ComponentRef, ContentChild, Directive, ElementRef, HostListener, Inject, InputSignalWithTransform, OnDestroy, ViewContainerRef, booleanAttribute, input} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {MatDialog, } from '@angular/material/dialog';
 import {POSITION, Position, PositionPlacement, applyPositionResult, getHostElement} from '@anglr/common';
@@ -6,6 +6,7 @@ import {BindThis, nameof} from '@jscrpt/common';
 import {Subscription} from 'rxjs';
 
 import {SourceViewerComponent} from '../../components/sourceViewer/sourceViewer.component';
+import {ShowSourceContentDirective} from '../showSourceContent/showSourceContent.directive';
 
 /**
  * Directive used for displaying source HTML
@@ -39,12 +40,30 @@ export class ShowSourceDirective implements AfterViewInit, OnDestroy
      */
     private _componentRef: ComponentRef<SourceViewerComponent>|undefined|null;
 
+    //######################### private properties #########################
+
+    /**
+     * Gets inner html of code content element
+     */
+    private get innerHtml(): string
+    {
+        return this.contentElement?.element?.nativeElement?.innerHTML ?? this._element.nativeElement.innerHTML;
+    }
+
     //######################### public properties - inputs #########################
 
     /**
      * Indication whether display source inline, or in dialog 
      */
     public inline: InputSignalWithTransform<boolean, boolean|''> = input<boolean, boolean|''>(true, {transform: booleanAttribute});
+
+    //######################### protected properties - children #########################
+
+    /**
+     * Gets content element directive
+     */
+    @ContentChild(ShowSourceContentDirective)
+    protected contentElement: ShowSourceContentDirective|undefined|null;
 
     //######################### constructor #########################
     constructor(private _element: ElementRef<HTMLElement>,
@@ -67,7 +86,7 @@ export class ShowSourceDirective implements AfterViewInit, OnDestroy
             return;
         }
 
-        this._sourceHtml = this._element.nativeElement.innerHTML;
+        this._sourceHtml = this.innerHtml;
 
         this._componentRef = this._viewContainer.createComponent(SourceViewerComponent);
         this._componentRef.setInput(nameof<SourceViewerComponent>('sourceHtml'), this._sourceHtml);
@@ -103,7 +122,7 @@ export class ShowSourceDirective implements AfterViewInit, OnDestroy
             return;
         }
 
-        this._sourceHtml = this._element.nativeElement.innerHTML;
+        this._sourceHtml = this.innerHtml;
 
         const div = this._popupElement = this._document.createElement('div');
         const button = this._document.createElement('button');

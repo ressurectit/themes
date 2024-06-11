@@ -1,3 +1,10 @@
+<div class="flex-row flex-end margin-top-medium">
+    <button type="button" class="btn-icon text-left margin-top-big" goBack [title]="'back' | firstUppercaseLocalize">
+        <span class="fas fa-arrow-left"></span>
+        <span>{{'back' | firstUppercaseLocalize}}</span>
+    </button>
+</div>
+
 <div renderMarkdown>
 # Blocks
 
@@ -25,7 +32,7 @@ Visual building blocks for creating content.
 </div>
 
 <div showSource class="html-sample">
-    <div class="html-sample-margin" withTheme showSourceContent>
+    <div class="html-sample-margin flex-1" withTheme showSourceContent>
         <div class="primary-block">
             <div>Text displayed inside of block.</div>
         </div>
@@ -51,7 +58,7 @@ Visual building blocks for creating content.
 </div>
 
 <div showSource class="html-sample">
-    <div class="html-sample-margin" withTheme showSourceContent>
+    <div class="html-sample-margin flex-1" withTheme showSourceContent>
         <div class="secondary-block">
             <div>Text displayed inside of block.</div>
         </div>
@@ -79,7 +86,7 @@ Visual building blocks for creating content.
 </div>
 
 <div showSource class="html-sample">
-    <div class="html-sample-margin" withTheme showSourceContent>
+    <div class="html-sample-margin flex-1" withTheme showSourceContent>
         <div class="highlight-block">
             <div>Text displayed inside of block.</div>
         </div>
