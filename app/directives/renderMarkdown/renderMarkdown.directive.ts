@@ -5,6 +5,8 @@ import {Notifications} from '@anglr/common';
 import {DEFAULT_RENDER_MARKDOWN_CONFIG, HelpService, MD_HELP_NOTIFICATIONS, RENDER_MARKDOWN_CONFIG, RenderMarkdownConfig, handleHelpServiceError, handleRouterLink, renderMarkdown, updateRenderMarkdownConfig} from '@anglr/md-help/web';
 import {extend} from '@jscrpt/common';
 
+//TODO: move into md-help
+
 /**
  * Directive that renders markdown inside
  */

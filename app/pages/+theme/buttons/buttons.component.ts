@@ -1,7 +1,7 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {FirstUppercaseLocalizeSAPipe, GoBackDirective, HostScrollableContentStyle} from '@anglr/common';
 
-import {RenderMarkdownDirective, WithThemeDirective} from '../../../directives';
+import {RenderMarkdownDirective, ShowSourceDirective, WithThemeDirective} from '../../../directives';
 
 /**
  * Component used for displaying docs for buttons theme
@@ -18,6 +18,7 @@ import {RenderMarkdownDirective, WithThemeDirective} from '../../../directives';
         WithThemeDirective,
         GoBackDirective,
         FirstUppercaseLocalizeSAPipe,
+        ShowSourceDirective,
     ],
     preserveWhitespaces: true,
     changeDetection: ChangeDetectionStrategy.OnPush
