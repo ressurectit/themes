@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, Inject, Signal, computed, ElementRef, inject} from '@angular/core';
+import {Component, ChangeDetectionStrategy, Inject, Signal, computed, ElementRef, inject, Optional, InputSignal, input} from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {DIALOG_DATA} from '@angular/cdk/dialog';
 import {CdkCopyToClipboard} from '@angular/cdk/clipboard';
@@ -35,14 +35,21 @@ export class SourceViewerComponent
      * Instance of element
      */
     protected element: ElementRef<HTMLElement> = inject(ElementRef);
+
+    //######################### public properties - inputs #########################
+
+    /**
+     * Source html when component used not as dialog
+     */
+    public sourceHtml: InputSignal<string|undefined|null> = input();
     
     //######################### constructor #########################
-    constructor(@Inject(DIALOG_DATA) sourceHtml: string,)
+    constructor(@Optional() @Inject(DIALOG_DATA) protected sourceHtmlDialog?: string,)
     {
         this.htmlSource = computed(() =>
         {
             return `\`\`\`html
-${sourceHtml.replace(/\s_ngcontent-ng-.*?=""/g, '')}
+${(this.sourceHtml() ?? sourceHtmlDialog ?? '').replace(/\s_ngcontent-ng-.*?=""/g, '')}
 \`\`\``;
         });
     }

@@ -4,6 +4,9 @@
     <span class="fas fa-copy"></span>
 </button>
 
-<button class="absolute btn-icon extra-extra-extra-large-text absolute close-btn" mat-dialog-close>
-    <span class="fas fa-times"></span>
-</button>
+@if(sourceHtmlDialog)
+{
+    <button class="absolute btn-icon extra-extra-extra-large-text absolute close-btn" mat-dialog-close>
+        <span class="fas fa-times"></span>
+    </button>
+}

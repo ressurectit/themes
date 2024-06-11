@@ -9,6 +9,10 @@
 
 $_defaultTheme:
 (
+    page:
+    (
+        background: #aaa,
+    )
 );
 
 @function defineTheme($theme: ())

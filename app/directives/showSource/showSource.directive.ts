@@ -1,8 +1,8 @@
-import {Directive, ElementRef, HostListener, Inject, OnDestroy} from '@angular/core';
+import {AfterViewInit, ComponentRef, Directive, ElementRef, HostListener, Inject, InputSignalWithTransform, OnDestroy, ViewContainerRef, booleanAttribute, input} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {MatDialog, } from '@angular/material/dialog';
-import {POSITION, Position, PositionPlacement, applyPositionResult} from '@anglr/common';
-import {BindThis} from '@jscrpt/common';
+import {POSITION, Position, PositionPlacement, applyPositionResult, getHostElement} from '@anglr/common';
+import {BindThis, nameof} from '@jscrpt/common';
 import {Subscription} from 'rxjs';
 
 import {SourceViewerComponent} from '../../components/sourceViewer/sourceViewer.component';
@@ -15,7 +15,7 @@ import {SourceViewerComponent} from '../../components/sourceViewer/sourceViewer.
     selector: '[showSource]',
     standalone: true,
 })
-export class ShowSourceDirective implements OnDestroy
+export class ShowSourceDirective implements AfterViewInit, OnDestroy
 {
     //######################### private fields #########################
 
@@ -34,12 +34,50 @@ export class ShowSourceDirective implements OnDestroy
      */
     private _popupElement: HTMLDivElement|undefined|null;
 
+    /**
+     * Component ref for inline source viewer
+     */
+    private _componentRef: ComponentRef<SourceViewerComponent>|undefined|null;
+
+    //######################### public properties - inputs #########################
+
+    /**
+     * Indication whether display source inline, or in dialog 
+     */
+    public inline: InputSignalWithTransform<boolean, boolean|''> = input<boolean, boolean|''>(true, {transform: booleanAttribute});
+
     //######################### constructor #########################
     constructor(private _element: ElementRef<HTMLElement>,
                 private _dialogSvc: MatDialog,
+                private _viewContainer: ViewContainerRef,
                 @Inject(DOCUMENT) private _document: Document,
                 @Inject(POSITION) private _position: Position<HTMLElement>,)
     {
+    }
+
+    //######################### public methods - implementation of AfterViewInit #########################
+    
+    /**
+     * @inheritdoc
+     */
+    public ngAfterViewInit(): void
+    {
+        if(!this.inline())
+        {
+            return;
+        }
+
+        this._sourceHtml = this._element.nativeElement.innerHTML;
+
+        this._componentRef = this._viewContainer.createComponent(SourceViewerComponent);
+        this._componentRef.setInput(nameof<SourceViewerComponent>('sourceHtml'), this._sourceHtml);
+
+        const element = getHostElement(this._componentRef);
+
+        if(element)
+        {
+            element.style.border = '1px solid #1e1e1e';
+        }
     }
 
     //######################### public methods - implementation of OnDestroy #########################
@@ -60,6 +98,11 @@ export class ShowSourceDirective implements OnDestroy
     @HostListener('mouseenter')
     protected showSourceLink(): void
     {
+        if(this.inline())
+        {
+            return;
+        }
+
         this._sourceHtml = this._element.nativeElement.innerHTML;
 
         const div = this._popupElement = this._document.createElement('div');
@@ -90,6 +133,11 @@ export class ShowSourceDirective implements OnDestroy
     @HostListener('mouseleave')
     protected hideSourceLink(): void
     {
+        if(this.inline())
+        {
+            return;
+        }
+
         this._removeCreatedSources();
 
         this._sourceHtml = null;
@@ -102,6 +150,8 @@ export class ShowSourceDirective implements OnDestroy
      */
     private _removeCreatedSources(): void
     {
+        this._componentRef?.destroy();
+
         this._popupElement?.remove();
         this._popupElement = null;
 
